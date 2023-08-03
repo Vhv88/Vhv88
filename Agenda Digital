@@ -62,4 +62,62 @@ def obtener_informacion_contacto(nombre_completo, agenda):
             print("Email:", contacto["email"])
             return
 
-    print("No se encontró
+    print("No se encontró el contacto '{}' en la agenda.".format(nombre_completo))
+
+agenda_digital = [
+    {
+        "nombre":"Victor Huidobro Vico",
+        "telefono":"628183793",
+        "direccion":"Calle Berlin 51",
+        "email":"scoutbrosgaming@gmail.com"
+    },
+    {
+        "nombre":"Xavier Edo Salarich",
+        "telefono":"661616116",
+        "direccion":"Calle Nicaragua 76",
+        "email":"xavi57@hotmail.com"
+    },
+    {
+        "nombre":"Oscar Dominguez Celada",
+        "telefono":"633663363",
+        "direccion":"Calle Numancia 78",
+        "email":"roskin@pro.es"
+    },
+    {
+        "nombre":"Adria Sanchez Lopez",
+        "telefono":"688668686",
+        "direccion":"Travessera de les corts 176",
+        "email":"adri13an@hotmail.com"
+    },
+    {
+        "nombre":"Eduard Morales Llobet",
+        "telefono":"622662626",
+        "direccion":"Calle Numancia 122",
+        "email":"mora_tuner@hotmail.com"
+    }
+]
+
+while True:
+    mostrar_menu()
+    opcion = input("Ingrese el número de opción: ")
+
+    if opcion == "1":
+        print("Agenda Digital:")
+        for contacto in agenda_digital:
+            print("\nNombre del contacto:", contacto["nombre"])
+            print("Teléfono:", contacto["telefono"])
+            print("Dirección:", contacto["direccion"])
+            print("Email:", contacto["email"])
+    elif opcion == "2":
+        nuevo_contacto = solicitar_contacto_agenda()
+        agenda_digital.append(nuevo_contacto)
+        guardar_agenda_en_archivo(agenda_digital, nombre_archivo)
+        print("Nuevo contacto agregado a la agenda.")
+    elif opcion == "3":
+        nombre_buscado = input("Ingrese el nombre completo del contacto: ")
+        obtener_informacion_contacto(nombre_buscado, agenda_digital)
+    elif opcion == "4":
+        print("¡Hasta luego!")
+        break
+    else:
+        print("Opción inválida. Por favor, ingrese un número de opción válido.")
